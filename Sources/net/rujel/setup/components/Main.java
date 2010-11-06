@@ -15,7 +15,6 @@ import java.util.Enumeration;
 
 import com.webobjects.eocontrol.*;
 
-import com.webobjects.foundation.*;
 
 public class Main extends WOComponent {
 	private static final long serialVersionUID = 1L;
@@ -126,12 +125,15 @@ public class Main extends WOComponent {
 			makePlist();
 			submit();
 		}
-		plist = null;
 	}
 	public boolean disabled() {
 		if (! getOn() && ! Various.boolForObject(((NSDictionary)item).valueForKey("advanced")))
 			return true;
 		return false;
+	}
+	public WOActionResults submitList() {
+		plist=null;
+		return null;
 	}
 	
 	public boolean havePresets(){
@@ -285,9 +287,10 @@ public class Main extends WOComponent {
 			try {
 				
 				moveToOld();
+				
 				String modules = NSPathUtilities.stringByDeletingLastPathComponent(plistFile.getPath());
 				File modulesFolder = new File(defFolder(), modules);
-				modulesFolder.mkdir();
+				modulesFolder.mkdirs();
 				
 				FileOutputStream pre = new FileOutputStream(plistFile);
 				OutputStreamWriter dat = new OutputStreamWriter(pre, "UTF-8");

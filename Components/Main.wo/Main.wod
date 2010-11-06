@@ -42,6 +42,11 @@ plTitle : WOString {
   value = array.title;
 }
 
+plPath : WOString {
+  value = array.path;
+}
+
+
 plDescription : WOString {
   value = array.description;
 }
@@ -133,4 +138,9 @@ restore : WOHyperlink {
 
 canRestore : WOConditional {
   condition = restorable;
+}
+
+submitList : WOSubmitButton {
+	action = submitList;
+	value = "Применить";
 }
