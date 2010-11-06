@@ -1,0 +1,136 @@
+MetaLists : WORepetition {
+list = metaPLists;
+item = item;
+}
+
+val : WOString {
+  value = getName;
+}
+
+go : WOHyperlink {
+	action = makePlist;
+	
+}
+
+Meta : WOConditional {
+  condition = metaPLists.count;
+}
+
+NoMetaExeption : WOConditional {
+  condition = metaPLists.count;
+  negate = true;
+}
+
+doplist : WOConditional {
+  condition = plist;
+  fragmentIdentifier = "startEdit";
+}
+
+havePresets : WOConditional {
+  condition = havePresets;
+}
+
+changepreset : WOPopUpButton {
+  list = presets;
+  item = item;
+  displayString = getName;
+  selection = plist;
+  onchange = "form.submit();";
+}
+
+plTitle : WOString {
+  value = array.title;
+}
+
+plDescription : WOString {
+  value = array.description;
+}
+
+plistEditForm : WOForm {
+}
+
+plistEdit : PlistEdit {
+	plist = plist;
+	array = array.keys;
+}
+
+PresetsForm : WOForm {
+	action = htmlCheck;
+}
+
+submit : WOSubmitButton {
+	value = "Сохранить";
+	action = submit;
+}
+
+ErrorMessage : WOString {
+  value = session.message;
+}
+
+Advanced : WOHyperlink {
+	style = "position:absolute; right:5px; font-size:16px;";
+	action = change;
+}
+
+advButton : WOString {
+ 	value = advButton;
+}
+
+regime : WOString {
+  value = regime;
+  
+}
+
+tr : WOGenericContainer {
+	elementName = "tr";
+	bgcolor = color;
+}
+
+FilePath : WOForm {
+}
+
+polFilePath : WOTextField {
+  value = session.folder;
+  size = 70;
+}
+
+isAdvanced : WOConditional {
+  condition = isAdvanced;
+}
+
+plistIsAdvanced : WOConditional {
+  condition = plistIsAdvanced;
+}
+
+td : WOGenericContainer {
+	elementName = "td";
+	align = "right";
+	style = textColor;
+}
+
+tr2 : WOGenericContainer {
+	elementName = "tr";
+	style = textColor;
+}
+
+status : WOString {
+  value = status;
+}
+
+turnOnOff : WOCheckBox {
+	checked = on;
+	disabled = disabled;
+}
+
+offOnForm : WOForm {
+  
+}
+
+restore : WOHyperlink {
+	
+	action = restore;
+}
+
+canRestore : WOConditional {
+  condition = restorable;
+}
